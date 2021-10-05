@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/save}" th:object="${dealler}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>				
+					<td>product ID:</td>
+					<td>
+						<input type="text" th:field="*{prdocut_id}" readonly="readonly" />
+					</td>
+				</tr>			
+				<tr>				
+					<td>Product Name:</td>
+					<td>
+						<input type="text" th:field="*{product_name}" />
+					</td>
+				</tr>
+				
+				<tr>				
+					<td>Product Description:</td>
+					<td>
+						<input type="text" th:field="*{product_description}" />
+					</td>
+				</tr>
+				
+				<tr>				
+					<td>Product price:</td>
+					<td>
+						<input type="number" th:field="*{price}" />
+					</td>
+				</tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+</body>
+</html>
