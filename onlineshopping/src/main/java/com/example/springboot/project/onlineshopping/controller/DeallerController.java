@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.springboot.project.onlineshopping.entity.Dealler;
 import com.example.springboot.project.onlineshopping.service.DeallerService;
@@ -78,5 +80,20 @@ public class DeallerController {
 	public String saveDealler(@ModelAttribute("dealler") Dealler dealler) {
 		deallerService.saveDealler(dealler);
 		return "redirect:/";
+	}
+
+	@RequestMapping("/edit/{id}")
+	public ModelAndView showEditDealler(@PathVariable(name = "id") int id) {
+		ModelAndView mav = new ModelAndView("edit_dealler");
+		Dealler dealler = deallerService.getDeallerByid(id);
+		mav.addObject("dealler", dealler);
+		
+		return mav;
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public String deleteDepartment(@PathVariable(name = "id") int id) {
+		deallerService.deleteDealler(id);
+		return "redirect:/";		
 	}
 }

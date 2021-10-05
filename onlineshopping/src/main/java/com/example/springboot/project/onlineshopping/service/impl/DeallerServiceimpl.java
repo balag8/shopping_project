@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.springboot.project.onlineshopping.entity.Dealler;
+import com.example.springboot.project.onlineshopping.exception.RecordNotFoundException;
 import com.example.springboot.project.onlineshopping.repository.DeallerRepository;
 import com.example.springboot.project.onlineshopping.service.DeallerService;
 
@@ -24,25 +25,28 @@ public class DeallerServiceimpl implements DeallerService {
 	public List<Dealler> getAllDealler() {
 			return deallerRepo.findAll();
 	}
-/*
+
 	@Override
 	public Dealler getDeallerByid(int product_id) {
 		return deallerRepo.findById(product_id)
 				.orElseThrow(() -> new RecordNotFoundException("Dealler with ID "+product_id+" not found"));
-		return null;
+	
 	}
 
 	@Override
 	public Dealler updateDealler(int product_id, Dealler dealler) {
-		// TODO Auto-generated method stub
-		return null;
+		Dealler d1 = getDeallerByid(product_id);
+		d1.setProduct_name(dealler.getProduct_name());
+		d1.setProduct_description(dealler.getProduct_description());
+		d1.setPrice(dealler.getPrice());
+		return deallerRepo.save(d1);
 	}
 
 	@Override
 	public void deleteDealler(int product_id) {
-		// TODO Auto-generated method stub
-		
+		Dealler dealler = getDeallerByid(product_id);
+		deallerRepo.delete(dealler);
 	}
-*/	
+
 	
 }

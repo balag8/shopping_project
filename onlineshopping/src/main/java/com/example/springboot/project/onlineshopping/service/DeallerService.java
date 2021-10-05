@@ -10,10 +10,10 @@ public interface DeallerService {
 	
 	public List<Dealler> getAllDealler();
 	
-	/*public Dealler getDeallerByid(int product_id);
+	public Dealler getDeallerByid(int product_id);
 	
 	public Dealler updateDealler(int product_id, Dealler dealler);
 	
 	public void deleteDealler(int product_id); 
-*/
+
 }
